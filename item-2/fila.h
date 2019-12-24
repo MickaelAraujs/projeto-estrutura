@@ -1,5 +1,8 @@
 #include "processo.h"
 
+//criando TAD nodo
+typedef struct nodo Nodo;
+
 //criando TAD fila
 typedef struct fila Fila;
 
@@ -7,10 +10,10 @@ typedef struct fila Fila;
 Fila *criaFila();
 
 //adicionar elemento ao final da fila
-void push(Fila *fila,int id);
+void push(Fila *f,int id);
 
 //imprime todos os elementos da fila
-void imprimeFila(Fila *fila);
+void imprimeFila(Fila *f);
 
 //libera todos os elementos da fila, chamando a função liberaProcesso contido em processo.h
-void liberaFila(Fila *fila);
+void liberaFila(Fila *f);

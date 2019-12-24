@@ -5,7 +5,9 @@ typedef struct processo Processo;
 Processo *criaProcesso();
 
 //imprime informações contidas no struct processo
-void imprimeProcesso();
+void imprimeProcesso(Processo *p);
 
 //libera o processo com o procedimento free e retorna o número identificador do processo
-int liberaProcesso();
+int liberaProcesso(Processo *p);
+
+void addProcesso(Processo *p,int id);
