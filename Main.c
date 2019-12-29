@@ -50,8 +50,8 @@ int main() {	//Inicializando o joguinho ..
 
 
 int inicializar(Pilha * pino1, int * discos){    
-	
-    printf("INSIRA O NUMERO DE DISCOS \n");
+    printf("GAME DA TORRE DE HANOI");	
+    printf("INSIRA O NUMERO DE DISCOS PARA COMECAR A JOGAR:\n");
     fflush(stdin);
     scanf("%d", discos);
     if(*discos < 0){
