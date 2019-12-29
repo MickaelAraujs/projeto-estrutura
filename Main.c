@@ -9,7 +9,7 @@ int mover(Pilha * origem, Pilha * destino);
 void mostrarPinos(Pilha * pino1, Pilha * pino2, Pilha * pino3);
 void mostrarPossibilidades(Pilha * pino1, Pilha * pino2, Pilha * pino3);
 
-int main() {//Inicializando o joguinho ..
+int main() {	//Inicializando o joguinho ..
     int estado = 1;    
     int discos = 0; 
     Pilha * A = criar();
@@ -17,27 +17,27 @@ int main() {//Inicializando o joguinho ..
     Pilha * C = criar();
     while(estado != 1000){
         switch(estado){
-case 1 :
-    system("cls");//pra limpar a tela dos bangui;
-    estado = inicializar(A, &discos);     
-    break;
-case 2 :
-    system("cls");
-    mostrarPinos(A,B,C); 
-case 3 :
-    mostrarPossibilidades(A,B,C);
-case 4 :                
-    estado = movimentar(A, B, C);                
+	case 1 :
+   	 	system("cls");//pra limpar a tela dos bangui;
+    		 estado = inicializar(A, &discos);     
+   		 break;
+	case 2 :
+   		 system("cls");
+   		 mostrarPinos(A,B,C); 
+	case 3 :
+   		 mostrarPossibilidades(A,B,C);
+	case 4 :                
+    		estado = movimentar(A, B, C);                
                 break;            
-case 5 :
-    if(tamanho(C) == discos){
-                    estado = 6;
+	case 5 :
+    		if(tamanho(C) == discos){
+                   	 estado = 6;
                 }
                 else{
                     estado = 2;   
                 }
                 break;  
-case 6 :
+	case 6 :
                 terminar(A, B, C);
                 estado = 1000;
                 break;            
