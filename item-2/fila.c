@@ -43,3 +43,14 @@ void imprimeFila(Fila *f) {
 	}
 }
 
+void liberaFila(Fila *f) {
+	Nodo *aux = f->inicio;
+	while(aux!=NULL) {
+		f->inicio = aux->proximo;
+		int processID = liberaProcesso(aux->process);
+		printf("processo %d finalizado!!!\n\n",processID);
+		Nodo *aux2 = aux;
+		aux = aux->proximo;
+		free(aux2);
+	}
+}
