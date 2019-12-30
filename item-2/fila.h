@@ -17,3 +17,6 @@ void imprimeFila(Fila *f);
 
 //libera todos os elementos da fila, chamando a função liberaProcesso contido em processo.h
 void liberaFila(Fila *f);
+
+//retira da fila o elemento com maior tempo de espera.
+int maiorTempoEspera(Fila *f);

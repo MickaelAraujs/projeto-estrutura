@@ -34,10 +34,10 @@ void push(Fila *f,int id) {
 	}
 	else {
 		Nodo *aux = f->inicio;
-		int soma = tempoEspera(aux->process);
+		int soma = tempoExe(aux->process);
 		while(aux->proximo!=NULL) {
 			aux = aux->proximo;
-			soma = soma + tempoEspera(aux->process);
+			soma = soma + tempoExe(aux->process);
 		}
 		aux->proximo = novo;
 		addProcesso(novo->process,id,soma);
@@ -53,6 +53,7 @@ void imprimeFila(Fila *f) {
 }
 
 void liberaFila(Fila *f) {
+	printf("\n\n LIBERANDO PROCESSOS ...\n\n");
 	Nodo *aux = f->inicio;
 	while(aux!=NULL) {
 		f->inicio = aux->proximo;
@@ -62,4 +63,26 @@ void liberaFila(Fila *f) {
 		aux = aux->proximo;
 		free(aux2);
 	}
+}
+
+int maiorTempoEspera(Fila *f) {
+	/* O maior tempo de espera é o último elemento da fila pois o tempo de espera consiste na soma dos tempos de execução dos processos */
+	
+	Nodo *aux = f->inicio;
+	while(aux->proximo!=NULL) {
+		aux = aux->proximo;
+	}
+	int tempoEsp = tempoEspera(aux->process);
+	
+	Nodo *aux2 = f->inicio;
+	while(aux2->proximo!=aux) {
+		aux2 = aux2->proximo;
+	}
+	aux2->proximo = NULL;
+	
+	int process = liberaProcesso(aux->process);
+	printf("processo %d finalizado!!!\n\n",process);
+	free(aux);
+	
+	return tempoEsp;
 }

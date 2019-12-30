@@ -13,3 +13,5 @@ int liberaProcesso(Processo *p);
 void addProcesso(Processo *p,int id,int espera);
 
 int tempoEspera(Processo *p);
+
+int tempoExe(Processo *p);

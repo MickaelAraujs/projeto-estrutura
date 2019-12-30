@@ -29,12 +29,14 @@ int liberaProcesso(Processo *p) {
 
 void addProcesso(Processo *p,int id,int espera) {
 	p->id = id;
-
-	
 	p->tempo = (rand()%100) + 1;
 	p->espera = espera;
 }
 
 int tempoEspera(Processo *p) {
+	return p->espera;
+}
+
+int tempoExe(Processo *p) {
 	return p->tempo;
 }
