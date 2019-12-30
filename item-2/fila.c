@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<time.h>
 
 #include "processo.h"
 #include "fila.h"
@@ -20,18 +21,26 @@ Fila *criaFila() {
 }
 
 void push(Fila *f,int id) {
+	srand(time(NULL));
+
 	Nodo *novo = (Nodo*) malloc(sizeof(Nodo));
-	addProcesso(novo->process,id);
+	novo->process = criaProcesso();
+
 	novo->proximo = NULL;
+
 	if(f->inicio==NULL) {
 		f->inicio = novo;
+		addProcesso(novo->process,id,0);
 	}
 	else {
 		Nodo *aux = f->inicio;
+		int soma = tempoEspera(aux->process);
 		while(aux->proximo!=NULL) {
 			aux = aux->proximo;
+			soma = soma + tempoEspera(aux->process);
 		}
 		aux->proximo = novo;
+		addProcesso(novo->process,id,soma);
 	}
 }
 

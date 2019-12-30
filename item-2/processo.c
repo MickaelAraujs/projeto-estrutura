@@ -1,13 +1,13 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<time.h>
 
 #include "processo.h"
 
-#define TEMPO_MAX 100.0 // representa o tempo máximo para cada processo em ms.
-
 struct processo {
 	int id; //número identificador do processo
-	float tempo; //representa o tempo do processo em ms.
+	int tempo; //representa o tempo do processo em ms.
+	int espera; //tempo de espera do processo.
 };
 
 Processo *criaProcesso() {
@@ -17,7 +17,8 @@ Processo *criaProcesso() {
 
 void imprimeProcesso(Processo *p) {
 	printf("NUMERO DO PROCESSO: %d\n\n",p->id);
-	printf("TEMPO DE EXECUCAO DO PROCESSO: %.2f\n\n",p->tempo);
+	printf("TEMPO DE EXECUCAO DO PROCESSO: %d ms\n\n",p->tempo);
+	printf("TEMPO DE ESPERA DO PROCESSO: %d ms\n\n",p->espera);
 }
 
 int liberaProcesso(Processo *p) {
@@ -26,6 +27,14 @@ int liberaProcesso(Processo *p) {
 	return aux;
 }
 
-void addProcesso(Processo *p,int id) {
+void addProcesso(Processo *p,int id,int espera) {
 	p->id = id;
+
+	
+	p->tempo = (rand()%100) + 1;
+	p->espera = espera;
+}
+
+int tempoEspera(Processo *p) {
+	return p->tempo;
 }

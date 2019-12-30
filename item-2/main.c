@@ -5,15 +5,16 @@
 #include "fila.h"
 
 int main(void) {
+	printf("TESTANDO IMPLEMENTACAO:\n\n\n");
+	
 	Fila *f = criaFila();
 	
 	int k;
-	for(k=1;k<=5;k++) {
+	for(k=0;k<5;k++) {
 		push(f,k);
 	}
 
 	imprimeFila(f);
-
 	liberaFila(f);
 
 	return 0;

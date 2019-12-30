@@ -10,4 +10,6 @@ void imprimeProcesso(Processo *p);
 //libera o processo com o procedimento free e retorna o número identificador do processo
 int liberaProcesso(Processo *p);
 
-void addProcesso(Processo *p,int id);
+void addProcesso(Processo *p,int id,int espera);
+
+int tempoEspera(Processo *p);
