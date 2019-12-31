@@ -4,6 +4,8 @@
 #include "processo.h"
 #include "fila.h"
 
+//Grupo1: Denis Ferreira, Luciana Ferreira e Mickael Araujo.
+
 int main(void) {
 	printf("TESTANDO IMPLEMENTACAO:\n\n\n");
 	
