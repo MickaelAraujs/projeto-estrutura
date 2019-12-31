@@ -20,9 +20,17 @@ Fila *criaFila() {
 	return f;
 }
 
-void push(Fila *f,int id) {
-	srand(time(NULL));
+int tamanhoFila(Fila *f) {
+	Nodo *aux = f->inicio;
+	int count = 0;
+	while(aux!=NULL) {
+		count++;
+		aux = aux->proximo;
+	}
+	return count;
+}
 
+void push(Fila *f,int id,int tempo) {
 	Nodo *novo = (Nodo*) malloc(sizeof(Nodo));
 	novo->process = criaProcesso();
 

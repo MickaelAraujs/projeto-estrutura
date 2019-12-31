@@ -15,3 +15,9 @@ void addProcesso(Processo *p,int id,int espera);
 int tempoEspera(Processo *p);
 
 int tempoExe(Processo *p);
+
+//preenche um vetor com números aleatórios
+void gerarNumeros(int vet[]);
+
+//busca o indice de um vetor e retorna o valor contido nele
+int buscaIndice(int i,int vet[]);

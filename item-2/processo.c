@@ -4,6 +4,8 @@
 
 #include "processo.h"
 
+#define TAM 10
+
 struct processo {
 	int id; //número identificador do processo
 	int tempo; //representa o tempo do processo em ms.
@@ -40,3 +42,23 @@ int tempoEspera(Processo *p) {
 int tempoExe(Processo *p) {
 	return p->tempo;
 }
+
+void gerarNumeros(int vet[]) {
+	srand(time(NULL));
+	int k;
+	for(k=0;k<TAM;k++) {
+		vet[k] = (rand()%100) + 1;
+	}
+}
+
+int buscaIndice(int i,int vet[]) {
+	int k;
+	for(k=0;k<TAM;k++) {
+		if(k==i) {
+			return vet[k];
+		}
+	}
+	
+	return -1;
+}
+

@@ -9,8 +9,11 @@ typedef struct fila Fila;
 //criando nova fila, retorna um ponteiro para uma fila
 Fila *criaFila();
 
+//retorna o tamanho da fila
+int tamanhoFila(Fila *f);
+
 //adicionar elemento ao final da fila
-void push(Fila *f,int id);
+void push(Fila *f,int id,int tempo);
 
 //imprime todos os elementos da fila
 void imprimeFila(Fila *f);
