@@ -4,7 +4,7 @@
 #include "Pilha.h"
 #include "Empilha.h"
 
-/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+//Grupo1: Denis Ferreira, Luciana Ferreira e Mickael Araujo.
 
 int main(void) {
 	int estado = 1;    
