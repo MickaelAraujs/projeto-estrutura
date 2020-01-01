@@ -5,7 +5,7 @@
 #include "Empilha.h"
 
 int inicializar(Pilha * pino1, int * discos){    
-    printf("************GAME DA TORRE DE HANOI\n*************");	
+    printf("************GAME DA TORRE DE HANOI*************\n");	
     printf("INSIRA O NUMERO DE DISCOS PARA COMECAR A JOGAR:\n");
     fflush(stdin);
     scanf("%d", discos);
