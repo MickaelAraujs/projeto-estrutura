@@ -73,8 +73,8 @@ void liberaFila(Fila *f) {
 	}
 }
 
-int maiorTempoEspera(Fila *f) {
-	/* O maior tempo de espera é o último elemento da fila pois o tempo de espera consiste na soma dos tempos de execução dos processos */
+void maiorTempoEspera(Fila *f) {
+	/* O maior tempo de espera Ã© o Ãºltimo elemento da fila pois o tempo de espera consiste na soma dos tempos de execuÃ§Ã£o dos processos */
 	
 	Nodo *aux = f->inicio;
 	while(aux->proximo!=NULL) {
@@ -91,6 +91,4 @@ int maiorTempoEspera(Fila *f) {
 	int process = liberaProcesso(aux->process);
 	printf("processo %d finalizado!!!\n\n",process);
 	free(aux);
-	
-	return tempoEsp;
 }
