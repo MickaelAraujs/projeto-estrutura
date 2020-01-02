@@ -3,68 +3,79 @@
 
 #include "Pilha.h"
 
-#define TAM_MAX 100
+struct nodo {
+	int info;
+	struct nodo *prox;
+};
 
 struct pilha {
-	int itens[TAM_MAX];
-	int tp;
+	Nodo *topo;
 };
 
 Pilha * criar() {
-	Pilha * p = (Pilha *)malloc(sizeof(Pilha));
-	p->tp = 0;
+	Pilha *p = (Pilha*) malloc(sizeof(Pilha));
+	p->topo = NULL;
+	
 	return p;
 }
 
-void destruir(Pilha * p) {
-	if (p != NULL) {
-		free(p);
+void destruir(Pilha *p) {
+	Nodo *aux = p->topo;
+	while(aux!=NULL) {
+		Nodo *aux2 = aux->prox;
+		free(aux);
+		aux = aux2;
 	}
+	free(p);
 }
 
-int desempilhar(Pilha * p) {
-	if (p->tp == 0) {
-		printf("Pilha vazia");
+int desempilhar(Pilha *p) {
+	if(p->topo == NULL) {
+		printf("Pilha vazia!!");
+		exit(1);
+	}
+	Nodo *aux = p->topo;
+	int valor = aux->info;
+	p->topo = aux->prox;
+	free(aux);
+	
+	return valor;
+}
+
+void empilhar(Pilha *p, int x) {
+	Nodo *novo = (Nodo*) malloc(sizeof(Nodo));
+	novo->info = x;
+	novo->prox = p->topo;
+	p->topo = novo;
+}
+
+int tamanho(Pilha *p) {
+	Nodo *aux = p->topo;
+	int count = 0;
+	while(aux!=NULL) {
+		count++;
+		aux = aux->prox;
+	}
+	return count;
+}
+
+int topo(Pilha *p) {
+	if(p->topo == NULL) {
 		return -1;
 	}
-	return p->itens[--p->tp];
+	Nodo *aux = p->topo;
+	int tp = aux->info;
+	return tp;
 }
 
-void empilhar(Pilha * p, int x) {
-	if (p->tp == TAM_MAX) {
-		printf("Estouro de pilha!");
-		return;
-	}
-	p->itens[p->tp++] = x;
-}
-
-int tamanho(Pilha * p) {
-	return p->tp;
-}
-
-int topo(Pilha * p) {
-	if (p->tp == 0) {
-		//printf("Pilha vazia");
-		return -1;
-	}
-	return p->itens[p->tp-1];
-}
-
-void imprimir(Pilha * p) {
-	int i;
+void imprimir(Pilha *p) {
+	Nodo *aux = p->topo;
 	printf("[ ");
-	for(i=0; i<p->tp; i++) {
-		printf("%d ", p->itens[i]);
+	while(aux!=NULL) {
+		int inf = aux->info;
+		printf("%d ",inf);
+		aux = aux->prox;
 	}
 	printf("]\n");
-}
-
-void inverter3(Pilha * p) {
-	int i, f, tmp;
-	for (i = 0, f = p->tp-1; i < f; i++, f--) {
-		tmp = p->itens[i];
-		p->itens[i] = p->itens[f];
-		p->itens[f] = tmp;
-	}
 }
 
