@@ -18,9 +18,11 @@ Processo *criaProcesso() {
 }
 
 void imprimeProcesso(Processo *p) {
+	printf("**********************************************************************\n\n");
 	printf("NUMERO DO PROCESSO: %d\n\n",p->id);
 	printf("TEMPO DE EXECUCAO DO PROCESSO: %d ms\n\n",p->tempo);
 	printf("TEMPO DE ESPERA DO PROCESSO: %d ms\n\n",p->espera);
+	printf("**********************************************************************\n\n");
 }
 
 int liberaProcesso(Processo *p) {

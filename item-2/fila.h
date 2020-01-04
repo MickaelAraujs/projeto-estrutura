@@ -22,4 +22,6 @@ void imprimeFila(Fila *f);
 void liberaFila(Fila *f);
 
 //retira da fila o elemento com maior tempo de espera.
-int maiorTempoEspera(Fila *f);
+void maiorTempoEspera(Fila *f);
+
+int vazia(Fila *f);
