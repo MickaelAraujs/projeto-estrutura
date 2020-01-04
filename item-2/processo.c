@@ -64,3 +64,7 @@ int buscaIndice(int i,int vet[]) {
 	return -1;
 }
 
+int procuraIndiceProcesso(Processo *p){
+	return p->id;
+}
+

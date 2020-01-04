@@ -73,24 +73,26 @@ void liberaFila(Fila *f) {
 	}
 }
 
-void maiorTempoEspera(Fila *f) {
-	/* O maior tempo de espera é o último elemento da fila pois o tempo de espera consiste na soma dos tempos de execução dos processos */
-	
-	Nodo *aux = f->inicio;
-	while(aux->proximo!=NULL) {
-		aux = aux->proximo;
+void removeProcesso(Fila *f, int id) {
+	if(id == pegarIDPrimeiro(f)){
+		Nodo *aux = f->inicio;
+		f->inicio = f->inicio->proximo;
+		free(aux);
 	}
-	int tempoEsp = tempoEspera(aux->process);
-	
-	Nodo *aux2 = f->inicio;
-	while(aux2->proximo!=aux) {
-		aux2 = aux2->proximo;
+	else{
+		Nodo *aux = procuraIndice(f,id);
+		Nodo *anterior = f->inicio;
+		anterior = pegaAnterior(f, aux, anterior);
+		anterior->proximo = aux->proximo;
+		free(aux);
 	}
-	aux2->proximo = NULL;
-	
-	int process = liberaProcesso(aux->process);
-	printf("processo %d finalizado!!!\n\n",process);
-	free(aux);
+}
+
+Nodo *pegaAnterior(Fila*f, Nodo*aux, Nodo*anterior){
+	while(anterior->proximo != aux){
+		anterior = anterior->proximo;
+	}
+	return anterior;
 }
 
 int vazia(Fila *f) {
@@ -98,4 +100,20 @@ int vazia(Fila *f) {
 		return 1;
 	}
 	return 0;
+}
+
+int pegarIDPrimeiro(Fila *f){
+	Nodo *aux = f->inicio;
+	int k = procuraIndiceProcesso(aux->process);
+	return k;
+}
+
+Nodo *procuraIndice(Fila *f, int id){
+	Nodo *aux = f->inicio;
+	int k = procuraIndiceProcesso(aux->process);
+	while(k != id && aux!=NULL){
+		aux = aux->proximo;
+		k = procuraIndiceProcesso(aux->process);
+	}
+	return aux;
 }

@@ -21,3 +21,6 @@ void gerarNumeros(int vet[]);
 
 //busca o indice de um vetor e retorna o valor contido nele
 int buscaIndice(int i,int vet[]);
+
+//busca o processo pelo indice e retorna o id
+int procuraIndiceProcesso(Processo *p);

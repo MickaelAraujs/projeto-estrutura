@@ -21,7 +21,14 @@ void imprimeFila(Fila *f);
 //libera todos os elementos da fila, chamando a função liberaProcesso contido em processo.h
 void liberaFila(Fila *f);
 
-//retira da fila o elemento com maior tempo de espera.
-void maiorTempoEspera(Fila *f);
+//retira da fila os processos
+void removeProcesso(Fila *f, int id);
+
+Nodo *pegaAnterior(Fila*f, Nodo*aux, Nodo*anterior);
 
 int vazia(Fila *f);
+
+int pegarIDPrimeiro(Fila *f);
+
+//busca o processo pelo id e retorna um  poteiro que aaponta para o mesmo
+Nodo *procuraIndice(Fila *f, int id);
