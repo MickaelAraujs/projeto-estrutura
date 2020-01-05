@@ -117,3 +117,23 @@ Nodo *procuraIndice(Fila *f, int id){
 	}
 	return aux;
 }
+
+void maiorTempoEspera(Fila *f) {
+	/* O maior tempo de espera é o último elemento da fila pois o tempo de espera consiste na soma dos tempos de execução dos processos */
+
+	Nodo *aux = f->inicio;
+	while(aux->proximo!=NULL) {
+		aux = aux->proximo;
+	}
+	int tempoEsp = tempoEspera(aux->process);
+
+	Nodo *aux2 = f->inicio;
+	while(aux2->proximo!=aux) {
+		aux2 = aux2->proximo;
+	}
+	aux2->proximo = NULL;
+
+	int process = liberaProcesso(aux->process);
+	printf("processo %d finalizado!!!\n\n",process);
+	free(aux);
+}

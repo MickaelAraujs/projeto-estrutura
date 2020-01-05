@@ -26,6 +26,8 @@ void removeProcesso(Fila *f, int id);
 
 Nodo *pegaAnterior(Fila*f, Nodo*aux, Nodo*anterior);
 
+void maiorTempoEspera(Fila *f);
+
 int vazia(Fila *f);
 
 int pegarIDPrimeiro(Fila *f);
