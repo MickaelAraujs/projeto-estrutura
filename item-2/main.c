@@ -1,5 +1,5 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 #include "processo.h"
 #include "fila.h"
@@ -15,7 +15,7 @@ void menu(int opcao,Fila *f) {
 					int vet[TAM];
 					gerarNumeros(vet);
 					
-					printf("informe o ID do processo a ser realizado:\n");
+					printf("\nInforme o ID do processo a ser realizado:");
 					scanf("%d",&id);
 					
 					indice = rand()%TAM;
@@ -25,9 +25,28 @@ void menu(int opcao,Fila *f) {
 				
 					break;
 		}
-		case 2: maiorTempoEspera(f); break;
-		case 3: imprimeFila(f); break;
-		case 4: liberaFila(f); break;
+		case 2:{
+			int id = pegarIDPrimeiro(f);
+			removeProcesso(f,id);
+			break;
+		}
+		case 3:{
+			int id;
+			printf("Informe o ID do processo que deseja remover:");
+			scanf("%d",&id);
+			Nodo*aux = procuraIndice(f,id);
+			if(aux == NULL){
+				printf("ID invalido");
+			}
+			else{
+				removeProcesso(f,id);
+				printf("Processo removido com sucesso");
+			}
+			break;
+		}
+		case 4: maiorTempoEspera(f); break;
+		case 5: imprimeFila(f); break;
+		case 6: liberaFila(f); break;
 		case 0: break;
 		default: printf("OPCAO INVALIDA!!\n\n");
 	}
@@ -35,6 +54,7 @@ void menu(int opcao,Fila *f) {
 }
 
 int main(void) {
+	
 	Fila *f = criaFila();
 	
 	int opcao;
@@ -44,9 +64,11 @@ int main(void) {
 		
 		printf("******* DIGITE O NUMERO CORRESPONDENTE A UMA DAS OPCOES ABAIXO *******\n\n");
 		printf("1. Adicionar processo a fila de espera\n\n");
-		printf("2. Liberar processo com maior tempo de espera\n\n");
-		printf("3. Imprimir fila de processos\n\n");
-		printf("4 . Liberar todos os processos da fila\n\n");
+		printf("2. Remover o primeiro processo da fila\n\n");
+		printf("3. Remover um processo inserindo o id dele\n\n");
+		printf("4. Liberar processo com maior tempo de espera\n\n");
+		printf("5. Imprimir fila de processos\n\n");
+		printf("6. Liberar todos os processos da fila\n\n");
 		printf("0. Sair\n\n");
 		printf("**********************************************************************\n\n");
 	
